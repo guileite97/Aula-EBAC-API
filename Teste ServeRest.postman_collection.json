@@ -85,7 +85,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Samsung Galaxy S25\",\r\n  \"preco\": 5300,\r\n  \"descricao\": \"Celular\",\r\n  \"quantidade\": 100\r\n}",
+							"raw": "{\r\n  \"nome\": \"Galaxy Book\",\r\n  \"preco\": 2000,\r\n  \"descricao\": \"Computador\",\r\n  \"quantidade\": 100\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -210,12 +210,6 @@
 									"});\r",
 									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
-									"});\r",
-									"pm.test(\"Status code é 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"pm.test(\"Validar mensagem usuário já cadastrado\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -228,6 +222,225 @@
 							"script": {
 								"exec": [
 									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Guilherme Pereira\",\r\n  \"email\": \"guilhermeleite@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuários",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar usuário por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios/Xqk9QkXkwAw8zOTw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"Xqk9QkXkwAw8zOTw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios/Xqk9QkXkwAw8zOTw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"Xqk9QkXkwAw8zOTw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Guilherme Teste\",\r\n  \"email\": \"testeqa@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuarios/d3iIaNINZwIzsBll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"d3iIaNINZwIzsBll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuário já cadastrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Validar mensagem de email já utilizado\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -262,45 +475,16 @@
 					"response": []
 				},
 				{
-					"name": "Listar Usuários",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:3000/usuarios",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"usuarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Buscar usuário por ID",
+					"name": "Usuário não encontrado",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code é 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Status code é 400\", function () {\r",
+									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
-									"pm.test(\"Validar mensagem de usuário não localizado\", function () {\r",
+									"pm.test(\"Validar mensagem de usuário não encontrado\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Usuário não encontrado\");\r",
 									"});"
 								],
@@ -318,91 +502,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:3000/usuarios/HO1sCpeBAzHald87",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"usuarios",
-								"HO1sCpeBAzHald87"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code é 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:3000/usuarios/HO1sCpeBAzHald85",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"usuarios",
-								"HO1sCpeBAzHald85"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code é 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Guilherme Leite\",\r\n  \"email\": \"guilhermeleite@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -410,7 +510,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/usuarios/Xqk9QkXkwAw8zOTw",
+							"raw": "http://localhost:3000/usuarios/Xqk9QkXkwAw8z769",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -418,7 +518,7 @@
 							"port": "3000",
 							"path": [
 								"usuarios",
-								"Xqk9QkXkwAw8zOTw"
+								"Xqk9QkXkwAw8z769"
 							]
 						}
 					},
